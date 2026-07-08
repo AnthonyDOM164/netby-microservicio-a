@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_outer_classname = "RiesgosProto";
+option java_package = "ec.com.banco.riesgos.grpc";
+
+package riesgos;
+
+service ScoreRiesgo {
+  rpc ObtenerScore (CedulaRequest) returns (ScoreResponse);
+}
+
+service DeudasRiesgo {
+  rpc ObtenerDeudas (CedulaRequest) returns (DeudasResponse);
+}
+
+message CedulaRequest {
+  string cedula = 1;
+}
+
+message ScoreResponse {
+  int32 score = 1;
+}
+
+message DeudaResponse {
+  string institucion = 1;
+  string monto = 2;
+}
+
+message DeudasResponse {
+  repeated DeudaResponse deudas = 1;
+}
