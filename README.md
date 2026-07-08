@@ -39,10 +39,14 @@ para el borde publico consumido por la UI.
 Una evaluacion queda `APROBADO` cuando:
 
 ```txt
-score > 70 && (deudaMensual + montoSolicitado) < salarioMensual * 0.40
+cuotaMensual = montoSolicitado / (tiempoAnios * 12)
+score > 70 && (deudaMensual + cuotaMensual) < salarioMensual * 0.40
 ```
 
 En cualquier otro caso queda `RECHAZADO`.
+
+Se usa cuota mensual para que el plazo en anios influya en la evaluacion de una
+forma mas natural.
 
 ## Endpoints REST
 

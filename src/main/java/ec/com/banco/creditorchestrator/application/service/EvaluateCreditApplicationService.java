@@ -59,7 +59,7 @@ public class EvaluateCreditApplicationService implements EvaluateCreditUseCase, 
             CreditEvaluationCommand command,
             RiskProfile profile
     ) {
-        var status = policy.evaluate(profile, command.requestedAmount(), command.monthlySalary());
+        var status = policy.evaluate(profile, command.requestedAmount(), command.termYears(), command.monthlySalary());
         return CreditEvaluation.newEvaluation(identityCard, command.requestedAmount(), status);
     }
 }
